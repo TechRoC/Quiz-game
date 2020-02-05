@@ -1,0 +1,260 @@
+//Include the libraries
+#include<iostream>
+#include<conio.h>
+#include<string>
+#include<windows.h>
+#include<MMSystem.h>
+
+//use the standard namespace
+using namespace std;
+//declaring global variables
+int guess;
+int winnings;
+int answer;
+char name[10];
+
+
+int sound1()
+{
+PlaySound(TEXT("Family_Fortunes_Wrong_Buzzer.wav"), NULL, SND_SYNC);
+system("pause");
+return 0;
+}
+
+
+int sound()
+{
+PlaySound(TEXT("Kalimba.wav"), NULL, SND_SYNC);
+system("pause");
+return 0;
+}
+
+void end()
+{
+	
+	cout<<"                                enter your name : " <<endl;
+	cin>>name;
+	getch();
+	cout<<endl;
+	cout<<endl;
+	cout<<"                    WELCOME PLAYER : "<<name<<endl;
+	cout<<"                    YOU ARE GOING TO PLAY MR.X QUIZ"<<endl;
+	cout<<"                   MR.X IS THANKFULL TO YOU FOR PLAYING THIS GAME!!!!!!!!"<<endl;
+	cout<<endl;
+	cout<<endl;
+	getch();
+	cout<<"NOTICE - YOU CANNOT QUIET IN BETWEEN THE GAME YOU HAVE TO PLAY TILL THE END !!"<<endl;
+	cout<<endl;
+	cout<<endl;
+	getch();
+	cout<<"                               quiz STARTS IN"<<endl;
+	getch();
+	cout<<"                                       3     "<<endl;
+	getch();
+	cout<<"                                       2     "<<endl;
+	getch();
+	cout<<"                                       1     "<<endl;
+	getch();
+	
+	
+}
+
+//define the question class
+class Question
+{
+private:
+	string Question_Text;
+	string Answer_1;
+	string Answer_2;
+	string Answer_3;
+	string Answer_4;
+    int Correct_answer;
+	int Prize_amount;//how much the question is worth
+public:
+	
+	void setValues(string, string, string, string, string, int, int);
+    void askquestions();
+	
+};
+void main()
+{
+
+	 cout<<"          ****WELCOME!!!!****            "<<endl;
+	
+
+	//show the title of the screen
+cout<<"                              ***********************"<<endl;
+cout<<"                              * the great quiz      *"<<endl;
+cout<<"                              *                     *"<<endl;
+cout<<"                              *         by          *"<<endl;
+cout<<"                              *                     *"<<endl;
+cout<<"                              *       MR.X          *"<<endl;
+cout<<"                              ***********************"<<endl;
+cout<<endl;
+getch();
+
+end();
+
+//create instance of questions
+
+Question q1;
+Question q2;
+Question q3;
+Question q4;
+Question q5;
+Question q6;
+Question q7;
+Question q8;
+Question q9;
+Question q10;
+
+
+
+//Set the values for question instances
+
+q1.setValues("olympic 100m sprint record is set by whom", 
+	"usain bolt", 
+	"tyson gay", 
+	"asafa powell", 
+	"maurice greene", 
+	1, 
+	2500);
+q2.setValues("what is 2+2=", 
+	"1", 
+	"zero", 
+	"5", 
+	"4", 
+	4, 
+	5000);
+q3.setValues("which of these person has not walked on the moon?", 
+	"Charles Duke", 
+	"James A lovell", 
+	"Allen Bean", 
+	"Pete conrad", 
+	2, 
+	7500);
+q4.setValues("which of these person has not walked on the moon?", 
+	"Charles Duke", 
+	"James A lovell", 
+	"Allen Bean", 
+	"Pete conrad", 
+	2, 
+	7500);
+q5.setValues("which of these person has not walked on the moon?", 
+	"Charles Duke", 
+	"James A lovell", 
+	"Allen Bean", 
+	"Pete conrad", 
+	2, 
+	7500);
+q6.setValues("which of these person has not walked on the moon?", 
+	"Charles Duke", 
+	"James A lovell", 
+	"Allen Bean", 
+	"Pete conrad", 
+	2, 
+	7500);
+q7.setValues("which of these person has not walked on the moon?", 
+	"Charles Duke", 
+	"James A lovell", 
+	"Allen Bean", 
+	"Pete conrad", 
+	2, 
+	7500);
+q8.setValues("which of these person has not walked on the moon?", 
+	"Charles Duke", 
+	"James A lovell", 
+	"Allen Bean", 
+	"Pete conrad", 
+	2, 
+	7500);
+q9.setValues("which of these person has not walked on the moon?", 
+	"Charles Duke", 
+	"James A lovell", 
+	"Allen Bean", 
+	"Pete conrad", 
+	2, 
+	7500);
+q10.setValues("which of these person has not walked on the moon?", 
+	"Charles Duke", 
+	"James A lovell", 
+	"Allen Bean", 
+	"Pete conrad", 
+	2, 
+	7500);
+
+//ask the questions
+q1.askquestions();
+q2.askquestions();
+q3.askquestions();
+q4.askquestions();
+q5.askquestions();
+q6.askquestions();
+q7.askquestions();
+q8.askquestions();
+q9.askquestions();
+q10.askquestions();
+cout<<endl;
+cout<<"                                         *       RESULT : -"<<endl;
+cout<<"                                         * Total winning points : "<<winnings<<endl;
+cout<<"                                         * total Correct answers : "<<answer<<endl;
+		if(winnings>5000)
+		{
+			cout<<"                                        you are the great player : "<<name<<endl;
+		}
+		else
+		{
+			cout<<"                                        You can do much better : "<<name<<endl;
+		}
+		sound();
+}
+	
+
+//store values for question variables
+void Question::setValues (string q, string a1, string a2, string a3, string a4, int ca, int pa)
+{
+	Question_Text=q;
+	Answer_1=a1;
+	Answer_2=a2;
+	Answer_3=a3;
+	Answer_4=a4;
+	Correct_answer=ca;
+	Prize_amount=pa;
+}
+void Question::askquestions()
+{
+	cout<<endl;
+	cout<<Question_Text<<endl;
+	cout<<"1."<<Answer_1<<endl;
+	cout<<"2."<<Answer_2<<endl;
+	cout<<"3."<<Answer_3<<endl;
+	cout<<"4."<<Answer_4<<endl;
+	cout<<endl;
+	//ask question
+	cout<<"what is your answer ?"<<endl;
+		cin>>guess;
+//if user guesses right, add Prize_Amount to Winnings
+		if(guess==Correct_answer)
+		{
+			cout<<endl;
+		cout<<"you entered correct answer"<<endl;
+		winnings=winnings+Prize_amount;
+		answer=answer+1;
+cout<<"you just won points : "<<Prize_amount<<"!"<<endl;
+		
+		
+		getch();
+		}
+		else
+		{
+			cout<<endl;
+			cout<<"you are not correct"<<endl;
+			cout<<"The answer is :"<<Correct_answer<<endl;
+			sound1();
+			
+			
+			
+			cout<<endl;
+		}
+		
+}
